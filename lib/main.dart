@@ -1,7 +1,9 @@
-import 'package:evently_app/core/manger/theme_provider.dart';
+import 'package:evently_app/core/manger/app_provider.dart';
 import 'package:evently_app/core/route/approute.dart';
 import 'package:evently_app/core/theme/themedata.dart';
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -11,7 +13,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     ChangeNotifierProvider(
-      create: (context) => TProvider(),
+      create: (context) => AppProvider(),
       child: EventlyApp(),
     ),
   );
@@ -21,8 +23,20 @@ class EventlyApp extends StatelessWidget {
   const EventlyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<TProvider>(context);
+    var provider = Provider.of<AppProvider>(context);
     return MaterialApp(
+      title: 'Localizations Evently App',
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en'), // English
+        Locale('ar'), // Arabic
+      ],
+      locale: Locale(provider.local),
       theme: apptheme.light,
       darkTheme: apptheme.dark,
       themeMode: provider.tm,

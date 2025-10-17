@@ -1,9 +1,10 @@
-import 'package:evently_app/core/Views/Splash_Screen/splash_screen.dart';
-import 'package:evently_app/core/Views/auth/view/login_screen.dart';
-import 'package:evently_app/core/Views/auth/view/register_screen.dart';
-import 'package:evently_app/core/Views/layout/layout.dart';
-import 'package:evently_app/core/Views/onboarding/view/onboarding.dart';
-import 'package:evently_app/core/Views/onboarding/view/start_screen.dart';
+import 'package:evently_app/Views/Splash_Screen/splash_screen.dart';
+import 'package:evently_app/Views/auth/view/login_screen.dart';
+import 'package:evently_app/Views/auth/view/register_screen.dart';
+import 'package:evently_app/Views/layout/layout.dart';
+import 'package:evently_app/Views/layout/views/Add_Event/add_event.dart';
+import 'package:evently_app/Views/onboarding/view/onboarding.dart';
+import 'package:evently_app/Views/onboarding/view/start_screen.dart';
 import 'package:evently_app/core/constant/extension/duration.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class ApprouteName {
   static const String onboarding = 'Onboarding';
   static const String register = 'RegisterScreen';
   static const String layout = 'layout';
+  static const String addevent = 'add_event';
 }
 
 // Map<String, Widget Function(BuildContext)> routes = {
@@ -39,9 +41,11 @@ Route<dynamic> RouteG(String val) {
     case ApprouteName.register:
       return _PR(screen: CreateAcc(), duration: 800.mill);
     case ApprouteName.layout:
-      return _MR(Layout());
+      return _MR(LayoutScreen());
+    case ApprouteName.addevent:
+      return _PR(screen: AddEvent(), duration: 800.mill);
     default:
-      return MaterialPageRoute(builder: (context) => Layout());
+      return MaterialPageRoute(builder: (context) => Scaffold());
   }
 }
 

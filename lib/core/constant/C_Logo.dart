@@ -24,7 +24,7 @@ class CLogo extends StatelessWidget {
           ),
           SizedBox(width: 5),
           FadeInUpBig(
-            duration: Duration(milliseconds: 900),
+            duration: Duration(milliseconds: 800),
             child: Hero(
               tag: 'app-name',
               child: Material(
@@ -34,6 +34,7 @@ class CLogo extends StatelessWidget {
                 child: Text(
                   'Evently',
                   style: TextStyle(
+                    fontFamily: 'JockeyOne',
                     fontSize: 42,
                     fontWeight: FontWeight.bold,
                     color: Appcolors.primary,
