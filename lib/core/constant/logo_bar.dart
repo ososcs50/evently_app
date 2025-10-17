@@ -33,6 +33,7 @@ class Logo_Bar extends StatelessWidget {
               child: Text(
                 'Evently',
                 style: TextStyle(
+                  fontFamily: 'JockeyOne',
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: Appcolors.primary,

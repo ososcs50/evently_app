@@ -1,23 +1,24 @@
 import 'package:evently_app/core/theme/appcolors.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CustomBtn extends StatelessWidget {
   bool isloading;
   final Function() ontap;
   final String text;
+  Color color;
   CustomBtn({
     super.key,
     required this.ontap,
     required this.text,
     this.isloading = false,
+    this.color = Appcolors.primary,
   });
 
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
-      color: Appcolors.primary,
+      color: color,
       onPressed: ontap,
       child: AnimatedCrossFade(
         firstChild: Center(
