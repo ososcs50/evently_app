@@ -134,18 +134,18 @@ class Layouthome extends StatelessWidget {
 
                           return index % 2 == 0
                               ? FadeInLeft(
-                                  duration: 800.mill,
+                                  duration: 350.mill,
                                   child: Event_Card(
                                     islight: pro.islight,
-                                    pro: Layoutpro,
+
                                     eventdata: eventdata,
                                   ),
                                 )
                               : FadeInRight(
-                                  duration: 800.mill,
+                                  duration: 350.mill,
                                   child: Event_Card(
                                     islight: pro.islight,
-                                    pro: Layoutpro,
+
                                     eventdata: eventdata,
                                   ),
                                 );

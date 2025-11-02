@@ -1,25 +1,26 @@
-import 'package:evently_app/Views/layout/views/Add_Event/manger/addeventpro.dart';
+import 'package:evently_app/Views/layout/views/event_ui/provider/eventpro.dart';
 import 'package:evently_app/Views/layout/widgets/tabs_row.dart';
 import 'package:evently_app/core/constant/extension/sizeer.dart';
 import 'package:evently_app/core/models/Category_model.dart';
+import 'package:evently_app/core/models/event_model.dart';
 import 'package:evently_app/core/theme/appcolors.dart';
 import 'package:evently_app/core/widgets/C_Btn.dart';
-import 'package:evently_app/core/widgets/appdialog.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class AddEvent extends StatelessWidget {
-  const AddEvent({super.key});
+class EditEvent extends StatelessWidget {
+  final EventModel event;
+  const EditEvent({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return ChangeNotifierProvider(
       create: (BuildContext context) {
-        return Addeventpro();
+        return Eventpro()..setevent(event);
       },
-      child: Consumer<Addeventpro>(
+      child: Consumer<Eventpro>(
         builder: (BuildContext context, pro, Widget? child) => Scaffold(
           appBar: AppBar(
             leading: IconButton(
@@ -27,7 +28,7 @@ class AddEvent extends StatelessWidget {
               icon: Icon(Icons.arrow_back_ios),
             ),
 
-            title: Text('Add Event', style: theme.textTheme.titleSmall),
+            title: Text('Edit Event', style: theme.textTheme.titleSmall),
           ),
 
           body: SafeArea(
@@ -186,20 +187,9 @@ class AddEvent extends StatelessWidget {
                         height: 60,
                         child: CustomBtn(
                           ontap: () async {
-                            await pro
-                                .addevent(context)
-                                .then(
-                                  (value) => value
-                                      ? Navigator.pop(context)
-                                      : Appdialog.ShowMessage(
-                                          context,
-                                          title:
-                                              'Please Enter Data In ALL Fields',
-                                          type: MessageType.error,
-                                        ),
-                                );
+                            await pro.edit_event(event);
                           },
-                          text: 'Add Event',
+                          text: 'Edit Event',
                           isloading: pro.isloading,
                         ),
                       ),

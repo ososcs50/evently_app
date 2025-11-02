@@ -35,6 +35,7 @@ class Tabs_Row extends StatelessWidget {
         tabAlignment: TabAlignment.start,
         tabs: categorys.map((e) {
           int index = categorys.indexOf(e);
+          bool isSelected = index == tabindex;
           return Tab(
             child: Container(
               padding: EdgeInsets.all(8),
@@ -44,7 +45,17 @@ class Tabs_Row extends StatelessWidget {
                 border: Border.all(color: secondry, width: 1.5),
               ),
               child: Row(
-                children: [ImageIcon(AssetImage(e.icon)), 6.w, Text(e.name)],
+                children: [
+                  ImageIcon(
+                    AssetImage(e.icon),
+                    color: isSelected ? primery : secondry,
+                  ),
+                  6.w,
+                  Text(
+                    e.name,
+                    style: TextStyle(color: isSelected ? primery : secondry),
+                  ),
+                ],
               ),
             ),
           );

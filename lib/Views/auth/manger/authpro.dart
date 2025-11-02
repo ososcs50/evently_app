@@ -2,6 +2,7 @@ import 'package:evently_app/core/Services/authservices.dart';
 import 'package:evently_app/core/widgets/appdialog.dart';
 import 'package:evently_app/core/constant/extension/nav.dart';
 import 'package:evently_app/core/route/approute.dart';
+import 'package:evently_app/main.dart';
 
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class Authpro with ChangeNotifier {
   bool _showpass = false;
   bool get showpass => _showpass;
   TextEditingController emailcontrollor = TextEditingController();
+  TextEditingController Femailcontrollor = TextEditingController();
   TextEditingController passcontrollor = TextEditingController();
   TextEditingController Cemailcontrollor = TextEditingController();
   TextEditingController Cpasscontrollor = TextEditingController();
@@ -86,6 +88,26 @@ class Authpro with ChangeNotifier {
       }
       _isloading = false;
       notifyListeners();
+    }
+  }
+
+  void ResetPass() async {
+    try {
+      _isloading = true;
+      notifyListeners();
+      await Authservices.forgetpass(Femailcontrollor.text.trim());
+      _isloading = false;
+      notifyListeners();
+      navkey.currentContext!.pop();
+      Appdialog.ShowMessage(navkey.currentContext!, title: 'Check your inbox');
+    } catch (e) {
+      _isloading = false;
+      notifyListeners();
+      Appdialog.ShowMessage(
+        navkey.currentContext!,
+        title: e.toString(),
+        type: MessageType.error,
+      );
     }
   }
 

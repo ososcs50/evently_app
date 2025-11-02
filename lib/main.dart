@@ -19,6 +19,8 @@ void main() async {
   );
 }
 
+final navkey = GlobalKey<NavigatorState>();
+
 class EventlyApp extends StatelessWidget {
   const EventlyApp({super.key});
   @override
@@ -37,11 +39,12 @@ class EventlyApp extends StatelessWidget {
         Locale('ar'), // Arabic
       ],
       locale: Locale(provider.local),
+      navigatorKey: navkey,
       theme: apptheme.light,
       darkTheme: apptheme.dark,
       themeMode: provider.tm,
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: (settings) => RouteG(settings.name!),
+      onGenerateRoute: (settings) => RouteG(settings),
       initialRoute: ApprouteName.splash,
     );
   }

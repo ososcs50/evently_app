@@ -21,7 +21,7 @@ class PageBody extends StatelessWidget {
         Image.asset(img),
         40.h,
         Text(title, style: theme.textTheme.titleSmall),
-        40.h,
+        24.h,
         Text(sub, style: theme.textTheme.bodyMedium!.copyWith(fontSize: 16)),
       ],
     );

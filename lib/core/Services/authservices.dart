@@ -10,6 +10,10 @@ class Authservices {
     context.goAndRemove(ApprouteName.login);
   }
 
+  static Future<void> forgetpass(String email) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+  }
+
   static Future<UserCredential> createacc(
     String email,
     String password,

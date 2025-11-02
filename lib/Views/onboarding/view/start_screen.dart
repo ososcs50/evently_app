@@ -6,7 +6,7 @@ import 'package:evently_app/core/manger/app_provider.dart';
 import 'package:evently_app/core/route/approute.dart';
 import 'package:evently_app/core/theme/appcolors.dart';
 import 'package:evently_app/core/widgets/C_Btn.dart';
-import 'package:evently_app/l10n/app_localizations.dart';
+// import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +16,7 @@ class StartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var applocal = AppLocalizations.of(context);
+    // var applocal = AppLocalizations.of(context);
     var theme = Theme.of(context);
     var pro = Provider.of<AppProvider>(context);
     return Scaffold(

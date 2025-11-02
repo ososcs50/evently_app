@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:evently_app/Views/auth/manger/authpro.dart';
 import 'package:evently_app/core/constant/C_Logo.dart';
+import 'package:evently_app/core/constant/extension/nav.dart';
 import 'package:evently_app/core/constant/extension/sizeer.dart';
 import 'package:evently_app/core/route/approute.dart';
 import 'package:evently_app/core/theme/appcolors.dart';
@@ -97,7 +98,9 @@ class LoginScreen extends StatelessWidget {
                                     overlayColor: WidgetStatePropertyAll(
                                       Colors.transparent,
                                     ),
-                                    onTap: () {},
+                                    onTap: () {
+                                      context.go(ApprouteName.forgetpass);
+                                    },
                                     child: Text(
                                       'Forget Password?',
                                       style: theme.textTheme.displayMedium!
